@@ -1,85 +1,124 @@
-/* Solo Leveling-Themed Styling */
-body {
-    background-color: #121212;
+/* styles.css */
+:root {
+    --dark-bg: #0a0a0a;
+    --neon-blue: #00f3ff;
+    --dark-purple: #2a0944;
+    --accent-red: #ff4655;
+    --text-glow: rgba(0, 243, 255, 0.4);
+}
+
+body.dark-theme {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 100%);
     color: #fff;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
-header {
-    background: linear-gradient(90deg, #0a0a0a, #1e1e1e);
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0.8);
+    border-bottom: 2px solid var(--neon-blue);
 }
 
-h1 {
-    font-size: 2rem;
-    color: #4caf50;
-    text-shadow: 0px 0px 10px rgba(76, 175, 80, 0.8);
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+.logo {
+    height: 40px;
+    filter: drop-shadow(0 0 8px var(--neon-blue));
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+.level-badge {
+    background: var(--dark-purple);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px var(--neon-blue);
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+.stats-panel {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--neon-blue);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 0 30px var(--text-glow);
 }
 
-nav ul li a:hover {
-    color: #4caf50;
-    text-shadow: 0px 0px 5px rgba(76, 175, 80, 0.8);
-}
-
-#stats, #daily-quest {
-    background: #1e1e1e;
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(76, 175, 80, 0.5);
-}
-
-progress {
-    width: 100%;
-    height: 20px;
-    border-radius: 10px;
+.exp-bar {
+    height: 25px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
+    position: relative;
     overflow: hidden;
 }
 
-progress::-webkit-progress-bar {
-    background-color: #333;
+.exp-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), #0055ff);
+    position: absolute;
+    transition: width 0.5s ease;
 }
 
-progress::-webkit-progress-value {
-    background-color: #4caf50;
-    transition: width 0.5s ease-in-out;
+.exp-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px var(--neon-blue);
 }
 
-button {
-    background: #4caf50;
-    color: white;
+.quest-card {
+    background: linear-gradient(145deg, #1a1a1a 0%, #2a0944 100%);
+    border: 1px solid var(--neon-blue);
+    padding: 2rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.quest-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, var(--neon-blue), transparent);
+    animation: glow 4s linear infinite;
+}
+
+@keyframes glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hunter-button {
+    background: linear-gradient(45deg, var(--neon-blue), #0055ff);
     border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    font-size: 1rem;
+    padding: 1rem 2rem;
+    color: black;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-button:hover {
-    background: #45a049;
-    box-shadow: 0px 0px 10px rgba(76, 175, 80, 0.8);
+.hunter-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon-blue);
 }
+
+.glowing-text {
+    text-shadow: 0 0 10px var(--neon-blue);
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Add more component styles as needed */

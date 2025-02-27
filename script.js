@@ -1,60 +1,60 @@
-document.addEventListener("DOMContentLoaded", () => {
-    let exp = 0;
-    let level = 1;
-    let workouts = {};
-    const expBar = document.getElementById("expBar");
-    const expDisplay = document.getElementById("exp");
-    const levelDisplay = document.getElementById("level");
-    const questButton = document.getElementById("complete-quest");
-    const expGain = 20;
-    const expThreshold = 100;
-    const workoutList = document.getElementById("workout-list");
+// app.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize workout schedule
+    generateWorkoutGrid();
     
-    function updateStats() {
-        expDisplay.textContent = `${exp}`;
-        levelDisplay.textContent = `${level}`;
-        expBar.value = exp;
-    }
-
-    function gainExp(amount) {
-        exp += amount;
-        if (exp >= expThreshold) {
-            levelUp();
-        }
-        updateStats();
-    }
-
-    function levelUp() {
-        exp -= expThreshold;
-        level++;
-        alert(`Congratulations! You've reached Level ${level}`);
-    }
-
-    questButton.addEventListener("click", () => {
-        gainExp(expGain);
-    });
+    // Load user progress
+    loadUserData();
     
-    function addWorkout(day, routine) {
-        workouts[day] = routine;
-        displayWorkouts();
-    }
-    
-    function displayWorkouts() {
-        workoutList.innerHTML = "";
-        for (const day in workouts) {
-            let li = document.createElement("li");
-            li.textContent = `${day}: ${workouts[day]}`;
-            workoutList.appendChild(li);
-        }
-    }
-    
-    document.getElementById("add-workout").addEventListener("click", () => {
-        const day = document.getElementById("workout-day").value;
-        const routine = document.getElementById("workout-routine").value;
-        if (day && routine) {
-            addWorkout(day, routine);
-        }
-    });
-    
-    updateStats();
+    // Setup event listeners
+    setupQuestSystem();
 });
+
+function generateWorkoutGrid() {
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const grid = document.querySelector('.schedule-grid');
+    
+    days.forEach(day => {
+        const dayCard = document.createElement('div');
+        dayCard.className = 'day-card';
+        dayCard.innerHTML = `
+            <h3>${day}</h3>
+            <div class="exercises"></div>
+            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+            <div class="workout-timer hidden">
+                <span>00:00:00</span>
+                <button class="cancel-btn"><i class="fas fa-times"></i></button>
+            </div>
+        `;
+        grid.appendChild(dayCard);
+    });
+}
+
+function loadUserData() {
+    // Load from localStorage or initialize
+    const userData = localStorage.getItem('hunterData') || {
+        level: 1,
+        exp: 0,
+        streak: 0,
+        workoutsCompleted: 0
+    };
+    
+    updateUI(userData);
+}
+
+function setupQuestSystem() {
+    const quests = [
+        { desc: "Complete 5km run", exp: 200, reward: '🏃 Speed Rune' },
+        { desc: "3x10 Pull-ups", exp: 150, reward: '💪 Strength Gem' },
+        { desc: "1 Hour Yoga Session", exp: 180, reward: '🧘 Focus Crystal' }
+    ];
+    
+    const currentQuest = quests[Math.floor(Math.random() * quests.length)];
+    document.querySelector('.quest-description').textContent = currentQuest.desc;
+    document.querySelector('.quest-rewards').innerHTML = `
+        <span class="reward-chip">+${currentQuest.exp} EXP</span>
+        <span class="reward-chip">${currentQuest.reward}</span>
+    `;
+}
+
+// Add more functionality for workout tracking, EXP calculation, etc.
