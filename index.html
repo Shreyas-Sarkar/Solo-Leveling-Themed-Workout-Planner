@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling Gym Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Solo Leveling Gym Tracker</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="workout.html">Workouts</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="stats">
+            <h3>Your Stats</h3>
+            <p>Level: <span id="level">1</span></p>
+            <p>EXP: <span id="exp">0</span>/100</p>
+            <progress id="expBar" value="0" max="100"></progress>
+        </section>
+        
+        <section id="workout">
+            <h3>Workout Tracker</h3>
+            <input type="text" id="workout-day" placeholder="Enter Day">
+            <input type="text" id="workout-routine" placeholder="Enter Routine">
+            <button id="add-workout">Add Workout</button>
+            <ul id="workout-list"></ul>
+        </section>
+        
+        <section id="daily-quest">
+            <h3>Bonus Quest</h3>
+            <p id="quest-description">Complete 3 sets of push-ups to earn extra EXP!</p>
+            <button id="complete-quest">Complete Quest</button>
+        </section>
+    </main>
+</body>
+</html>
