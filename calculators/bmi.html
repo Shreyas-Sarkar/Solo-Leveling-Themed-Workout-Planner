@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DungeonGains - Body Mass Index (BMI) Calculator</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .bmi-container {
             max-width: 600px;
@@ -119,52 +121,28 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.8; }
 }
+.system-content p {
+    opacity: 0;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end) forwards;
+}
+
 @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
+    from { width: 0 }
+    to { width: 100% }
+}
 
-        @keyframes blinkCursor {
-            from, to { border-color: transparent }
-            50% { border-color: #00f3ff }
-        }
+.quest-accept {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
 
-        .typewriter-line {
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 0 auto;
-            border-right: 2px solid #00f3ff;
-            animation: 
-                typing 3.5s steps(40, end),
-                blinkCursor .75s step-end infinite;
-        }
-
-        .quest-line {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: revealLine 0.5s forwards;
-        }
-
-        @keyframes revealLine {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .delay-1 { animation-delay: 3.2s }
-        .delay-2 { animation-delay: 4s }
-        .delay-3 { animation-delay: 5s }
-        .delay-4 { animation-delay: 6s }
-        .delay-5 { animation-delay: 7s }
-
-        @keyframes charReveal {
-            to { opacity: 1; text-shadow: 0 0 10px #00f3ff; }
-        }
-
-        @keyframes fadeInButton {
-            to { opacity: 1; transform: scale(1.1); }
-        }
+.system-content {
+    position: relative;
+    min-height: 200px;
+}
          /* Corner Murals */
     .corner-mural {
         position: absolute;
@@ -226,6 +204,202 @@
         0%, 100% { opacity: 0.8; transform: scale(1); }
         50% { opacity: 0.4; transform: scale(0.8); }
     }
+    .system-header {
+    font-family: 'Cormorant Unicase', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 2rem;
+}
+
+.system-content {
+    font-family: 'Cormorant Unicase', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.quest-accept {
+    font-family: 'Cormorant Unicase', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.system-info {
+    background: linear-gradient(145deg, rgba(15,10,30,0.95) 0%, rgba(25,15,45,0.95) 100%);
+    border: 2px solid #4a69bd;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0 0 30px rgba(74, 105, 189, 0.3);
+}
+
+.info-header {
+    color: #6c5ce7;
+    font-family: 'Cormorant Unicase', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(108, 92, 231, 0.4);
+    border-bottom: 1px solid #4a69bd;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    animation: header-pulse 2s infinite;
+}
+
+.bmi-lore p {
+    color: #dfe6e9;
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.formula {
+    font-family: 'Courier New', monospace;
+    color: #74b9ff;
+    padding: 1rem;
+    background: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.bmi-classes {
+    border-left: 3px solid #4a69bd;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.class-weak { color: #74b9ff }
+.class-optimal { color: #55efc4 }
+.class-warning { color: #ffeaa7 }
+.class-danger { color: #ff7675 }
+
+.system-note {
+    color: #a8d8ea;
+    font-style: italic;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@keyframes header-pulse {
+    0%, 100% { text-shadow: 0 0 15px rgba(108, 92, 231, 0.4); }
+    50% { text-shadow: 0 0 25px rgba(108, 92, 231, 0.6); }
+}
+.quest-title {
+    color: #00f3ff;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+}
+
+.class-card {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.class-card h4 {
+    color: #c0f0ff;
+    margin: 0.5rem 0;
+    font-family: 'Cormorant Unicase', serif;
+}
+
+.class-card p {
+    color: #dfe6e9;
+    line-height: 1.6;
+}
+
+.fragile { border-color: #74b9ff }
+.balanced { border-color: #55efc4 }
+.heavy { border-color: #ffeaa7 }
+.tank { border-color: #ff7675 }
+
+.class-icon {
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+}
+
+.system-warning {
+    padding: 1.5rem;
+    background: rgba(255, 158, 0, 0.1);
+    border: 1px solid #ff9e00;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.warning-icon {
+    font-size: 1.6rem;
+    margin-right: 0.8rem;
+}
+
+.mission-briefing {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(0, 243, 255, 0.05);
+    border-radius: 8px;
+}
+.system-info {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.info-header {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.quest-title {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.class-card h4 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.class-card p {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.system-warning h4 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+}
+
+.mission-briefing {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+}
+
+/* Keep existing colors and effects below */
+.class-card {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.fragile { border-color: #74b9ff }
+.balanced { border-color: #55efc4 }
+.heavy { border-color: #ffeaa7 }
+.tank { border-color: #ff7675 }
+
+.system-warning {
+    border: 1px solid #ff9e00;
+    background: rgba(255, 158, 0, 0.1);
+}
+
+.mission-briefing {
+    background: rgba(0, 243, 255, 0.05);
+}
+
     </style>
 </head>
 <body>
@@ -235,7 +409,7 @@
         </div>
         <nav>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li class="dropdown">
               <a href="#">Calculators</a>
               <ul class="dropdown-menu">
@@ -285,18 +459,57 @@
             「 Input weight and height values accurately<br>
             「 Determine current physical status classification
         </p>
-        <p>▷ Formula:</p>
-        <p style="padding-left: 1.5rem; color: #00f3ff;">
-            BMI = (Weight(kg)) / (Height(m))²
-        </p>
+        
         <p>▷ Reward:</p>
         <p style="padding-left: 1.5rem;">
             +15% Training Efficiency Bonus<br>
-            + Personal Status Window Unlocked
+            + 20 Exp
         </p>
         <button class="quest-accept" onclick="calculateBMI()">[ Accept Quest ]</button>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const lines = document.querySelectorAll('.system-content p');
+    const button = document.querySelector('.quest-accept');
+    let currentLine = 0;
+    
+    function animateLines() {
+        // Reset animation
+        lines.forEach(line => {
+            line.style.opacity = '0';
+            line.style.width = '0';
+            line.style.animation = 'none';
+        });
+        button.style.opacity = '0';
+
+        void lines[0].offsetHeight; // Trigger reflow
+
+        function typeNextLine() {
+            if(currentLine >= lines.length) {
+                // Show button and restart after 10s
+                button.style.opacity = '1';
+                setTimeout(() => {
+                    currentLine = 0;
+                    animateLines();
+                }, 10000);
+                return;
+            }
+
+            lines[currentLine].style.opacity = '1';
+            lines[currentLine].style.animation = 'typing 3s steps(40, end) forwards';
+            
+            currentLine++;
+            setTimeout(typeNextLine, 3000);
+        }
+
+        typeNextLine();
+    }
+
+    animateLines();
+});
+</script>
+
 
         <div class="bmi-container">
             <h2>Body Mass Index (BMI) Calculator</h2>
@@ -328,13 +541,13 @@
             let categoryMessage = '';
 
             if (bmi < 18.5) {
-                category = 'Underweight';
+                category = 'The Fragile Fighter';
                 categoryMessage = 'Your vessel lacks resilience. Strength training and nourishment required.';
             } else if (bmi >= 18.5 && bmi <= 24.9) {
-                category = 'Normal weight';
+                category = 'The Balanced Warrior';
                 categoryMessage = 'Your body is balanced, primed for growth. Keep training!';
             } else if (bmi >= 25 && bmi <= 29.9) {
-                category = 'Overweight';
+                category = 'The Heavy Hitter';
                 categoryMessage = 'Your movements may be hindered. Consider refining your training.';
             } else {
                 category = 'Obesity';
@@ -344,8 +557,58 @@
             document.getElementById('bmiResult').innerHTML = `<p>Your BMI is <strong>${bmi}</strong>, classified as <strong>${category}</strong>.</p><p>${categoryMessage}</p>`;
         }
     </script>
+    
+<div class="system-info">
+    
+    <div class="info-header">PLAYER HEALTH DIAGNOSTICS</div>
+    <div class="system-content">
+        <h3 class="quest-title">Player, Your BMI Has Been Calculated – Now It’s Time to Level Up</h3>
+        
+        <div class="bmi-analysis">
+            <p>You've unlocked a key stat in your health journey: your Body Mass Index (BMI). Think of it as a general gauge of your physical condition—like checking your HP bar in real life. Now, let's break down what it means and how you can optimize your build.</p>
+
+            <div class="class-breakdown">
+                <div class="class-card fragile">
+                    <span class="class-icon">🔹</span>
+                    <h4>BMI below 18.5 – The Fragile Fighter</h4>
+                    <p>Your BMI is in the underweight range. While agility might be your strong suit, low weight can come with health risks. To level up, focus on balanced nutrition and strength training. Consult a specialist for the best strategy.</p>
+                </div>
+
+                <div class="class-card balanced">
+                    <span class="class-icon">🔹</span>
+                    <h4>BMI 18.5 – 24.9 – The Balanced Warrior</h4>
+                    <p>You're in the optimal range, meaning your health stats are well-maintained. This puts you at a lower risk for many health issues and means you're already on the right track. Keep grinding with a good diet and consistent exercise to stay in peak form.</p>
+                </div>
+
+                <div class="class-card heavy">
+                    <span class="class-icon">🔹</span>
+                    <h4>BMI 25 – 29.9 – The Heavy Hitter</h4>
+                    <p>Your BMI places you in the overweight range. While extra mass can give you durability, it may slow you down and increase health risks. It's time to refine your build—focus on diet adjustments and active training to enhance your stamina and longevity.</p>
+                </div>
+
+                <div class="class-card tank">
+                    <span class="class-icon">🔹</span>
+                    <h4>BMI 30+ – The Overencumbered Tank</h4>
+                    <p>Your current weight class might be putting extra strain on your system, increasing risks like cardiovascular issues. Consider making tactical lifestyle changes—sharpen your eating habits, boost your activity levels, and reclaim control over your health bar.</p>
+                </div>
+            </div>
+
+            <div class="system-warning">
+                <span class="warning-icon">⚠️</span>
+                <h4>Bonus Stat Check: Waist Size Matters</h4>
+                <p>If your BMI is between 25–34.9 and your waist is over 40 inches (men) or 35 inches (women), your risk level is even higher. Take action now to prevent long-term health debuffs.</p>
+            </div>
+
+            <div class="mission-briefing">
+                <h4>Your Mission?</h4>
+                <p>Optimize your stats, build resilience, and level up your health. You don't have to face this alone—seek guidance if needed, and stay committed to the grind. After all, every great player knows that consistency is key to reaching the top.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
     <footer>
-      <p>&copy; Created by @itzsyruz(Shreyas Sarkar). All Rights Reserved.</p>
-    </footer>
+        <p>&copy; Created by @itzsyruz(Shreyas Sarkar). All Rights Reserved.</p>
+      </footer>
 </body>
 </html>
