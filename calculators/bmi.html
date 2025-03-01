@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DungeonGains - Body Mass Index (BMI) Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .bmi-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+        .bmi-container h2, .system-message {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .bmi-container label {
+            display: block;
+            margin-top: 1rem;
+        }
+        .bmi-container input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 5px;
+        }
+        .bmi-container button {
+            width: 100%;
+            padding: 0.7rem;
+            margin-top: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #8A2BE2;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .bmi-container button:hover {
+            background: #6a1bbd;
+        }
+        .bmi-result {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+.system-message {
+    padding: 2rem;
+    background: linear-gradient(145deg, rgba(0,5,15,0.95) 0%, rgba(0,20,40,0.95) 100%);
+    border: 2px solid #00f3ff;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    font-family: 'Courier New', monospace;
+    animation: systemPulse 2s infinite;
+}
+
+.system-message::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00f3ff, transparent 40%);
+    z-index: -1;
+    border-radius: 10px;
+}
+
+@keyframes systemPulse {
+    0% { box-shadow: 0 0 30px rgba(0, 243, 255, 0.2); }
+    50% { box-shadow: 0 0 50px rgba(0, 243, 255, 0.4); }
+    100% { box-shadow: 0 0 30px rgba(0, 243, 255, 0.2); }
+}
+
+.system-header {
+    color: #00f3ff;
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.7);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #00f3ff;
+    padding-bottom: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    animation: headerFlicker 1.5s infinite;
+}
+
+.system-content {
+    color: #c0f0ff;
+    line-height: 1.6;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.quest-accept {
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid #00f3ff;
+    color: #00f3ff;
+    padding: 0.8rem 2rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+.quest-accept:hover {
+    background: rgba(0, 243, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+}
+
+@keyframes headerFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+@keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blinkCursor {
+            from, to { border-color: transparent }
+            50% { border-color: #00f3ff }
+        }
+
+        .typewriter-line {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            border-right: 2px solid #00f3ff;
+            animation: 
+                typing 3.5s steps(40, end),
+                blinkCursor .75s step-end infinite;
+        }
+
+        .quest-line {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealLine 0.5s forwards;
+        }
+
+        @keyframes revealLine {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 3.2s }
+        .delay-2 { animation-delay: 4s }
+        .delay-3 { animation-delay: 5s }
+        .delay-4 { animation-delay: 6s }
+        .delay-5 { animation-delay: 7s }
+
+        @keyframes charReveal {
+            to { opacity: 1; text-shadow: 0 0 10px #00f3ff; }
+        }
+
+        @keyframes fadeInButton {
+            to { opacity: 1; transform: scale(1.1); }
+        }
+         /* Corner Murals */
+    .corner-mural {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #00f3ff;
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+    }
+
+    .mural-top-left {
+        top: -15px;
+        left: -15px;
+        border-right: none;
+        border-bottom: none;
+        border-radius: 10px 0 0 0;
+    }
+
+    .mural-top-right {
+        top: -15px;
+        right: -15px;
+        border-left: none;
+        border-bottom: none;
+        border-radius: 0 10px 0 0;
+    }
+
+    .mural-bottom-left {
+        bottom: -15px;
+        left: -15px;
+        border-right: none;
+        border-top: none;
+        border-radius: 0 0 0 10px;
+    }
+
+    .mural-bottom-right {
+        bottom: -15px;
+        right: -15px;
+        border-left: none;
+        border-top: none;
+        border-radius: 0 0 10px 0;
+    }
+
+    /* Animated inner patterns */
+    .corner-mural::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #00f3ff;
+        box-shadow: 0 0 10px #00f3ff;
+        animation: muralPulse 1.5s infinite;
+    }
+
+    .mural-top-left::after { top: 3px; left: 3px }
+    .mural-top-right::after { top: 3px; right: 3px }
+    .mural-bottom-left::after { bottom: 3px; left: 3px }
+    .mural-bottom-right::after { bottom: 3px; right: 3px }
+
+    @keyframes muralPulse {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <h1>DungeonGains</h1>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Calculators</a>
+              <ul class="dropdown-menu">
+                <li><a href="bmi.html">Body Mass Index (BMI)</a></li>
+                <li><a href="bfi.html">Body Fat Index</a></li>
+                <li><a href="calb.html">Calories Burned</a></li>
+                <li><a href="dcc.html">Daily Calorie Calculator</a></li>
+                <li><a href="repmax.html">One-Rep Max Calculator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                 <a href="#">Exercises List</a>
+              <ul class="dropdown-menu">
+                <li><a href="shoulder.html">Shoulder</a></li>
+                <li><a href="chest.html">Chest</a></li>
+                <li><a href="back.html">Back / Wing</a></li>
+                <li><a href="bicep.html">Biceps</a></li>
+                <li><a href="tricep.html">Triceps</a></li>
+                <li><a href="forearm.html">Forearm</a></li>
+                <li><a href="abs.html">Abs / Core</a></li>
+                <li><a href="leg.html">Leg</a></li>
+                <li><a href="calf.html">Calf</a></li>
+                <li><a href="cardio.html">Cardio</a></li>
+                <li><a href="fullb.html">Full Body</a></li>
+              </ul>
+            </li>
+            <li><a href="workoutplan.html">Workout Plan</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <main>
+<div class="system-message">
+    <div class="corner-mural mural-top-left"></div>
+    <div class="corner-mural mural-top-right"></div>
+    <div class="corner-mural mural-bottom-left"></div>
+    <div class="corner-mural mural-bottom-right"></div>
+    <div class="system-header"> SYSTEM ALERT </div>
+    <div class="system-content">
+        <p>◆ A NEW QUEST HAS APPEARED!</p>
+        <p>▷ Quest Title: [Physical Composition Analysis]</p>
+        <p>▷ Quest Type: Mandatory Evaluation</p>
+        <p>▷ Objective:</p>
+        <p style="padding-left: 1.5rem;">
+            「 Calculate Body Mass Index (BMI) to assess physical condition<br>
+            「 Input weight and height values accurately<br>
+            「 Determine current physical status classification
+        </p>
+        <p>▷ Formula:</p>
+        <p style="padding-left: 1.5rem; color: #00f3ff;">
+            BMI = (Weight(kg)) / (Height(m))²
+        </p>
+        <p>▷ Reward:</p>
+        <p style="padding-left: 1.5rem;">
+            +15% Training Efficiency Bonus<br>
+            + Personal Status Window Unlocked
+        </p>
+        <button class="quest-accept" onclick="calculateBMI()">[ Accept Quest ]</button>
+    </div>
+</div>
+
+        <div class="bmi-container">
+            <h2>Body Mass Index (BMI) Calculator</h2>
+            <form id="bmiForm">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" min="1" required>
+
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" min="1" required>
+
+                <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+            </form>
+            <div class="bmi-result" id="bmiResult"></div>
+        </div>
+    </main>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value) / 100;
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('bmiResult').innerHTML = '<p>Please enter valid weight and height values.</p>';
+                return;
+            }
+
+            const bmi = (weight / (height * height)).toFixed(2);
+            let category = '';
+            let categoryMessage = '';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                categoryMessage = 'Your vessel lacks resilience. Strength training and nourishment required.';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                category = 'Normal weight';
+                categoryMessage = 'Your body is balanced, primed for growth. Keep training!';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                category = 'Overweight';
+                categoryMessage = 'Your movements may be hindered. Consider refining your training.';
+            } else {
+                category = 'Obesity';
+                categoryMessage = 'Your vessel is heavily burdened. Immediate action is recommended!';
+            }
+
+            document.getElementById('bmiResult').innerHTML = `<p>Your BMI is <strong>${bmi}</strong>, classified as <strong>${category}</strong>.</p><p>${categoryMessage}</p>`;
+        }
+    </script>
+</body>
+</html>
