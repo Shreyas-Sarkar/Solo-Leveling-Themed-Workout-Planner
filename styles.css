@@ -1,13 +1,13 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: rgb(255,121,0);
-    background: linear-gradient(90deg, rgba(255,121,0,1) 18%, rgba(0,0,0,1) 100%);
+    background: rgb(0,0,0);
+    background: linear-gradient(270deg, rgba(0,0,0,1) 2%, rgba(63,39,120,1) 96%);
     color: white;
   }
   header {
-      background: rgb(0,0,0);
-      background: linear-gradient(90deg, rgba(0,0,0,1) 18%, rgba(255,121,0,1) 100%);
+    background: rgb(0,0,0);
+    background: linear-gradient(270deg, rgba(0,0,0,1) 2%, rgba(63,39,120,1) 96%);
       color: #fff;
       display: flex;
       justify-content: space-between;
