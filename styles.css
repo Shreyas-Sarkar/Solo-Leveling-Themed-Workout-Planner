@@ -1,10 +1,10 @@
-/* Import Orbitron Font */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+/* Import Eagle Lake Font */
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
 
 /* General Styles */
 body {
     margin: 0;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Eagle Lake', cursive;
     background: linear-gradient(270deg, rgba(0,0,0,1) 2%, rgba(63,39,120,1) 96%);
     color: white;
 }
@@ -27,7 +27,6 @@ header {
 .logo h1 {
     margin: 0;
     font-size: 1.8rem;
-    font-weight: 700;
     text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
     background: linear-gradient(45deg, #fff, #8A2BE2);
     -webkit-background-clip: text;
@@ -60,7 +59,6 @@ header {
     text-decoration: none;
     padding: 8px 15px;
     text-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
-    font-weight: 500;
     letter-spacing: 1px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -134,7 +132,6 @@ header {
 .dropdown-menu a {
     padding: 12px 20px;
     display: block;
-    font-weight: 400;
 }
 
 .dropdown-menu a:hover {
