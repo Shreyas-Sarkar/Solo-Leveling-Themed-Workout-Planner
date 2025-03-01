@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DungeonGains - Body Mass Index (BMI) Calculator</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -121,12 +121,17 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.8; }
 }
-.system-content p {
+.system-message .system-content p {
     opacity: 0;
     margin: 0;
     overflow: hidden;
     white-space: nowrap;
     animation: typing 3s steps(40, end) forwards;
+}
+
+.system-message .quest-accept {
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 @keyframes typing {
@@ -470,12 +475,13 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const lines = document.querySelectorAll('.system-content p');
-    const button = document.querySelector('.quest-accept');
+    // Only target paragraphs within system-message
+    const lines = document.querySelectorAll('.system-message .system-content p');
+    const button = document.querySelector('.system-message .quest-accept');
     let currentLine = 0;
     
     function animateLines() {
-        // Reset animation
+        // Reset only system-message elements
         lines.forEach(line => {
             line.style.opacity = '0';
             line.style.width = '0';
